@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <zulhijananda.com.jumperscrollview.JumperScrollView
+        android:id="@+id/scrollv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/large_text"/>
+    </zulhijananda.com.jumperscrollview.JumperScrollView>
+
+    <zulhijananda.com.jumperscrollview.JumperFab
+        android:id="@+id/jumperFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/scrollv"
+        app:layout_anchorGravity="right|bottom"
+        android:src="@drawable/ic_vertical_align_top_black_24dp" />
+
+</android.support.design.widget.CoordinatorLayout>
