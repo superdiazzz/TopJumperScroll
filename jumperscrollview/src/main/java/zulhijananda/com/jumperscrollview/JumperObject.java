@@ -1,7 +1,9 @@
 package zulhijananda.com.jumperscrollview;
 
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.os.CountDownTimer;
 import android.support.design.widget.AppBarLayout;
 import android.view.MotionEvent;
 import android.view.View;
@@ -13,16 +15,17 @@ public class JumperObject {
 
     private Activity activity;
 
-    public JumperObject(Activity activity,
+    private JumperObject(Activity activity,
                         JumperScrollView jumperScrollView,
                         JumperFab jumperFab,
-                        AppBarLayout appBarLayout){
+                        AppBarLayout appBarLayout,
+                         int speedScroll){
 
         this.activity = activity;
 
         responseJumperScroll(jumperScrollView, jumperFab);
 
-        eventJumperFab(jumperFab, appBarLayout, jumperScrollView);
+        eventJumperFab(jumperFab, appBarLayout, jumperScrollView, speedScroll);
 
         eventJumperAppBar(jumperFab, appBarLayout);
     }
@@ -45,14 +48,53 @@ public class JumperObject {
 
     }
 
-    private void eventJumperFab(JumperFab jumperFab, AppBarLayout appBarLayout,  JumperScrollView scrollView) {
+    /**
+     * Solving post delay scrollview
+     * https://stackoverflow.com/questions/7202193/scroll-up-a-scrollview-slowly
+     * @param jumperFab
+     * @param appBarLayout
+     * @param scrollView
+     * @param speed
+     */
+    private void eventJumperFab(JumperFab jumperFab, AppBarLayout appBarLayout,  JumperScrollView scrollView, int speed) {
 
         jumperFab.setOnClickListener(v -> {
-            scrollView.scrollTo(0, 0);
-            scrollView.fullScroll(View.FOCUS_UP);
-            if(appBarLayout != null){
-                appBarLayout.setExpanded(true);
+
+            if(speed != 0){
+                ObjectAnimator animator  = ObjectAnimator.ofInt(scrollView, "scrollY", 0);
+                animator.setDuration(speed);
+                animator.start();
+                if(appBarLayout != null){
+                    appBarLayout.postDelayed(() -> appBarLayout.setExpanded(true), speed-200);
+                }
+
+                /*new CountDownTimer(speed, 20){
+                    @Override
+                    public void onTick(long millisUntilFinished) {
+                        scrollView.scrollTo(0, (int) (speed - millisUntilFinished));
+                    }
+
+                    @Override
+                    public void onFinish() {
+
+                        if(appBarLayout != null){
+                            appBarLayout.setExpanded(true);
+                        }
+                    }
+                }.start();*/
+
+            }else {
+                scrollView.scrollTo(0, 0);
+                scrollView.fullScroll(View.FOCUS_UP);
+
+                if(appBarLayout != null){
+                    appBarLayout.setExpanded(true);
+                }
+
             }
+
+
+
         });
 
     }
@@ -80,6 +122,7 @@ public class JumperObject {
         private AppBarLayout appBarLayout;
         private JumperScrollView jumperScrollView;
         private JumperFab jumperFab;
+        private int speedScroll = 0;
 
         public Builder(Activity activity){
             this.activity = activity;
@@ -96,18 +139,38 @@ public class JumperObject {
             return this;
         }
 
+        /**
+         * Your scroolview (NestedScrollview)
+         * @param jumperScrollView
+         * @return
+         */
         public Builder setJumperScrollView(JumperScrollView jumperScrollView){
             this.jumperScrollView = jumperScrollView;
             return  this;
         }
 
+        /**
+         * Your FloatingActionBar
+         * @param jumperFab
+         * @return
+         */
         public Builder setJumperFab(JumperFab jumperFab){
             this.jumperFab = jumperFab;
             return this;
         }
 
+        /**
+         * indicator to setting speed while your scroll is jumping to Top
+         * @param millis
+         * @return
+         */
+        public Builder setSpeedScroll(int millis){
+            this.speedScroll = millis;
+            return this;
+        }
+
         public JumperObject build(){
-            return new JumperObject(activity, jumperScrollView, jumperFab, appBarLayout);
+            return new JumperObject(activity, jumperScrollView, jumperFab, appBarLayout, speedScroll);
         }
 
 

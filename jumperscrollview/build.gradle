@@ -1,4 +1,20 @@
+apply plugin: 'com.novoda.bintray-release'
 apply plugin: 'com.android.library'
+
+publish {
+
+    def groupProjectID = 'com.zulhijananda.jumperscroll'
+    def artifactProjectID = 'TopJumperScroll'
+    def publishVersionID = '1.0.0'
+
+    userOrg = 'superdiazzz'
+    repoName = 'TopJumperScroll'
+    groupId = groupProjectID
+    artifactId = artifactProjectID
+    publishVersion = publishVersionID
+    desc = 'Animating your FAB responsive by your touch and also expanding your CollapsedToolbar'
+    website = 'https://github.com/superdiazzz/TopJumperScroll'
+}
 
 android {
     compileSdkVersion 28

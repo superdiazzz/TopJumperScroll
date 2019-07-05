@@ -24,6 +24,7 @@ public class WithAppbarActivity extends AppCompatActivity {
                 .setJumperScrollView(jumperScrollView)
                 .setJumperFab(jumperFab)
                 .setAppBarLayout(appBarLayout)
+                .setSpeedScroll(2000)
                 .build();
 
 
