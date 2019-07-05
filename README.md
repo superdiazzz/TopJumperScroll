@@ -72,9 +72,7 @@ And your layout might like this
 </android.support.design.widget.CoordinatorLayout>
 ```
 ## And Result will be
-<pre>
-<img src="https://media.giphy.com/media/TF08tRVOL1UHKcyRAT/giphy.gif" alt="gambar">
-</pre>
+<a href="https://gifyu.com/image/Elfa"><img src="https://s3.gifyu.com/images/JumperScroll.md.gif" alt="JumperScroll.gif" border="0" /></a>
 
 If you use AppBar with CollapsingToolbarLayout, you can connecting it with this module like below
 ```java
