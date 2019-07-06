@@ -1,6 +1,8 @@
 package zulhijananda.com.jumperscrollview;
 
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.support.design.widget.FloatingActionButton;
 import android.util.AttributeSet;
 
@@ -9,27 +11,69 @@ import android.util.AttributeSet;
  */
 public class JumperFab extends FloatingActionButton {
 
+    private Drawable jumpingImage;
+    private Drawable defaultImage;
+    private TypedArray ta;
+
     public JumperFab(Context context) {
         super(context);
-        initialize(context);
+        initialize(context, null);
     }
 
 
     public JumperFab(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initialize(context);
+        initialize(context, attrs);
 
     }
 
     public JumperFab(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initialize(context);
+        initialize(context, attrs);
 
     }
 
-    private void initialize(Context context) {
+    private void initialize(Context context, AttributeSet attr) {
+
+        if(attr == null){
+            return;
+        }
+        ta = context.obtainStyledAttributes(attr, R.styleable.JumperFab);
+        defaultImage = ta.getDrawable(R.styleable.JumperFab_defaultImage);
+        if(defaultImage != null){
+            this.setImageDrawable(defaultImage);
+        }
+        jumpingImage = ta.getDrawable(R.styleable.JumperFab_jumpingImage);
+
 
     }
 
+    public void transitionImage(int milis){
+        this.hide();
+        this.setImageDrawable(jumpingImage);
+        this.show();
+        this.postDelayed(() -> {
+            this.hide();
+            this.setImageDrawable(defaultImage); // put it back
+            this.show();
+        }, milis);
+    }
 
+
+    public Drawable getJumpingImage() {
+        return jumpingImage;
+    }
+
+    public Drawable getDefaultImage() {
+        return defaultImage;
+    }
+
+    public void setJumpingImage(Drawable jumpingImage) {
+        this.jumpingImage = jumpingImage;
+        this.setImageDrawable(jumpingImage);
+    }
+
+    public void setDefaultImage(Drawable defaultImage) {
+        this.defaultImage = defaultImage;
+    }
 }

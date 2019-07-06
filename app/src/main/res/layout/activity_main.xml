@@ -22,8 +22,12 @@
         android:id="@+id/jumperFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:jumpingImage="@drawable/ic_arrow_upward_black_24dp"
+        app:defaultImage="@drawable/ic_vertical_align_top_black_24dp"
         app:layout_anchor="@id/scrollv"
         app:layout_anchorGravity="right|bottom"
-        android:src="@drawable/ic_vertical_align_top_black_24dp" />
+        android:backgroundTint="@color/colorPrimary"
+        />
+
 
 </android.support.design.widget.CoordinatorLayout>

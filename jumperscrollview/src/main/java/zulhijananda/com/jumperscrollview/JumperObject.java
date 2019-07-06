@@ -61,9 +61,15 @@ public class JumperObject {
         jumperFab.setOnClickListener(v -> {
 
             if(speed != 0){
+
+                if(jumperFab.getJumpingImage() != null){
+                    jumperFab.transitionImage(speed-200);
+                }
+
                 ObjectAnimator animator  = ObjectAnimator.ofInt(scrollView, "scrollY", 0);
                 animator.setDuration(speed);
                 animator.start();
+
                 if(appBarLayout != null){
                     appBarLayout.postDelayed(() -> appBarLayout.setExpanded(true), speed-200);
                 }
