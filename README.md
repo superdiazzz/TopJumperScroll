@@ -1,10 +1,8 @@
 # TopJumperScroll 
 Make Your Fab responsive by your touch :D
-<a href="https://bintray.com/superdiazzz/TopJumperScroll/TopJumperScroll/1.1.0/link"><img src="https://api.bintray.com/packages/superdiazzz/TopJumperScroll/TopJumperScroll/images/download.svg?version=1.1.0"/></a>
+<a href='https://bintray.com/superdiazzz/TopJumperScroll/TopJumperScroll/1.1.1/link'><img src='https://api.bintray.com/packages/superdiazzz/TopJumperScroll/TopJumperScroll/images/download.svg?version=1.1.1'></a>
 
 ## Installation
-
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 
 ```bash
 implementation 'com.zulhijananda.jumperscroll:TopJumperScroll:1.1.0'
