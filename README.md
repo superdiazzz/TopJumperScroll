@@ -5,7 +5,7 @@ Make Your Fab responsive by your touch :D
 ## Installation
 
 ```bash
-implementation 'com.zulhijananda.jumperscroll:TopJumperScroll:1.1.0'
+implementation 'com.zulhijananda.jumperscroll:TopJumperScroll:1.1.1'
 ```
 
 This module stands on java 8. So, do not forget to use java 1.8 to your build.gradle app 
