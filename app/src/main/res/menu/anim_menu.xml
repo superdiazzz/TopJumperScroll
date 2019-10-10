@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/taking_off"
+        android:title="Taking Off" />
+    <item
+        android:id="@+id/flipouty"
+        android:title="Flip Out Y" />
+    <item
+        android:id="@+id/rubberband"
+        android:title="RubberBand" />
+    <item
+        android:id="@+id/fade_out"
+        android:title="Fade Out" />
+    <item
+        android:id="@+id/zoom_out"
+        android:title="Zoom Out"/>
+    <item
+        android:id="@+id/fade_out_right"
+        android:title="Fade Out Right"/>
+
+</menu>

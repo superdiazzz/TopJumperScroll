@@ -4,6 +4,7 @@ import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import zulhijananda.com.jumperscrollview.JumperAnimType;
 import zulhijananda.com.jumperscrollview.JumperFab;
 import zulhijananda.com.jumperscrollview.JumperObject;
 import zulhijananda.com.jumperscrollview.JumperScrollView;
@@ -14,6 +15,8 @@ public class WithAppbarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_with_appbar);
+
+        setTitle("WITH APPBAR");
 
         AppBarLayout appBarLayout = findViewById(R.id.appbar);
         JumperScrollView jumperScrollView = findViewById(R.id.scrollv);

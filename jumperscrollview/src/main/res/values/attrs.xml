@@ -3,5 +3,6 @@
     <declare-styleable name="JumperFab">
         <attr name="jumpingImage" format="reference"/>
         <attr name="defaultImage" format="reference"/>
+        <attr name="colorBackground" format="color"/>
     </declare-styleable>
 </resources>

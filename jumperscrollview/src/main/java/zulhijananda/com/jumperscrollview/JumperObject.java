@@ -8,6 +8,9 @@ import android.support.design.widget.AppBarLayout;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+
 /**
  * Created by N Zul on 7/4/2019.
  */
@@ -19,13 +22,14 @@ public class JumperObject {
                         JumperScrollView jumperScrollView,
                         JumperFab jumperFab,
                         AppBarLayout appBarLayout,
-                         int speedScroll){
+                         int speedScroll,
+                         JumperAnimType techniques){
 
         this.activity = activity;
 
         responseJumperScroll(jumperScrollView, jumperFab);
 
-        eventJumperFab(jumperFab, appBarLayout, jumperScrollView, speedScroll);
+        eventJumperFab(jumperFab, appBarLayout, jumperScrollView, speedScroll, techniques);
 
         eventJumperAppBar(jumperFab, appBarLayout);
     }
@@ -56,7 +60,11 @@ public class JumperObject {
      * @param scrollView
      * @param speed
      */
-    private void eventJumperFab(JumperFab jumperFab, AppBarLayout appBarLayout,  JumperScrollView scrollView, int speed) {
+    private void eventJumperFab(JumperFab jumperFab,
+                                AppBarLayout appBarLayout,
+                                JumperScrollView scrollView,
+                                int speed,
+                                JumperAnimType techniques) {
 
         jumperFab.setOnClickListener(v -> {
 
@@ -69,6 +77,16 @@ public class JumperObject {
                 ObjectAnimator animator  = ObjectAnimator.ofInt(scrollView, "scrollY", 0);
                 animator.setDuration(speed);
                 animator.start();
+
+
+
+
+                if(techniques != null){
+                    YoYo.with(techniques.getValue())
+                            .duration(speed)
+                            .playOn(jumperFab);
+
+                }
 
                 if(appBarLayout != null){
                     appBarLayout.postDelayed(() -> appBarLayout.setExpanded(true), speed-200);
@@ -129,6 +147,7 @@ public class JumperObject {
         private JumperScrollView jumperScrollView;
         private JumperFab jumperFab;
         private int speedScroll = 0;
+        private JumperAnimType animCloseTechnique;
 
         public Builder(Activity activity){
             this.activity = activity;
@@ -175,8 +194,19 @@ public class JumperObject {
             return this;
         }
 
+        /**
+         * If you want to show closing animation interact with FAB
+         * @param animTechnique
+         * @return
+         */
+        public Builder setAnimCloseTechnique(JumperAnimType animTechnique){
+            this.animCloseTechnique = animTechnique;
+            return this;
+        }
+
+
         public JumperObject build(){
-            return new JumperObject(activity, jumperScrollView, jumperFab, appBarLayout, speedScroll);
+            return new JumperObject(activity, jumperScrollView, jumperFab, appBarLayout, speedScroll, animCloseTechnique);
         }
 
 

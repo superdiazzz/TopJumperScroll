@@ -46,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, WithAppbarActivity.class));
                 return true;
 
+            case R.id.withAnim:
+                startActivity(new Intent(this, WithAnimationActivity.class));
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

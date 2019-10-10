@@ -4,5 +4,7 @@
     <item
         android:id="@+id/withAppBar"
         android:title="With AppBar" />
-    <item android:title="Item" />
+    <item
+        android:id="@+id/withAnim"
+        android:title="With Animation" />
 </menu>
