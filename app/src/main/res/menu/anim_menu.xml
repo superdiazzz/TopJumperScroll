@@ -19,5 +19,23 @@
     <item
         android:id="@+id/fade_out_right"
         android:title="Fade Out Right"/>
+    <item
+        android:id="@+id/bounce_in_up"
+        android:title="Bounce In Up"/>
+    <item
+        android:id="@+id/bounce_in_down"
+        android:title="Bounce In Down"/>
+    <item
+        android:id="@+id/roll_out"
+        android:title="Roll Out"/>
+    <item
+        android:id="@+id/rotate_out"
+        android:title="Rotate Out"/>
+    <item
+        android:id="@+id/shake"
+        android:title="Shake"/>
+    <item
+        android:id="@+id/hinge"
+        android:title="Hinge"/>
 
 </menu>

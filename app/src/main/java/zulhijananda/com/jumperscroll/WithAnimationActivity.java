@@ -148,6 +148,98 @@ public class WithAnimationActivity extends AppCompatActivity {
                 Toast.makeText(this, "Fade Out Right", Toast.LENGTH_SHORT).show();
                 return true;
 
+
+            case R.id.bounce_in_up:
+                if(!jumperFab.isShown()){
+                    jumperFab.show();
+                }
+
+                new JumperObject.Builder(this)
+                        .setJumperScrollView(jumperScrollView)
+                        .setJumperFab(jumperFab)
+                        .setSpeedScroll(2000)
+                        .setAnimCloseTechnique(JumperAnimType.BOUNCEINUP)
+                        .build();
+
+                Toast.makeText(this, "Bounce in up", Toast.LENGTH_SHORT).show();
+                return true;
+
+           case  R.id.bounce_in_down:
+               if(!jumperFab.isShown()){
+                   jumperFab.show();
+               }
+
+               new JumperObject.Builder(this)
+                       .setJumperScrollView(jumperScrollView)
+                       .setJumperFab(jumperFab)
+                       .setSpeedScroll(2000)
+                       .setAnimCloseTechnique(JumperAnimType.BOUNCEINDOWN)
+                       .build();
+
+               Toast.makeText(this, "Bounce in Down", Toast.LENGTH_SHORT).show();
+               return true;
+
+            case R.id.roll_out:
+                if(!jumperFab.isShown()){
+                    jumperFab.show();
+                }
+
+                new JumperObject.Builder(this)
+                        .setJumperScrollView(jumperScrollView)
+                        .setJumperFab(jumperFab)
+                        .setSpeedScroll(2000)
+                        .setAnimCloseTechnique(JumperAnimType.ROLLOUT)
+                        .build();
+
+                Toast.makeText(this, "Roll out", Toast.LENGTH_SHORT).show();
+                return true;
+
+            case R.id.rotate_out:
+                if(!jumperFab.isShown()){
+                    jumperFab.show();
+                }
+
+                new JumperObject.Builder(this)
+                        .setJumperScrollView(jumperScrollView)
+                        .setJumperFab(jumperFab)
+                        .setSpeedScroll(2000)
+                        .setAnimCloseTechnique(JumperAnimType.ROTATEOUT)
+                        .build();
+
+                Toast.makeText(this, "Rotate Out", Toast.LENGTH_SHORT).show();
+                return true;
+
+            case R.id.shake:
+                if(!jumperFab.isShown()){
+                    jumperFab.show();
+                }
+
+                new JumperObject.Builder(this)
+                        .setJumperScrollView(jumperScrollView)
+                        .setJumperFab(jumperFab)
+                        .setSpeedScroll(2000)
+                        .setAnimCloseTechnique(JumperAnimType.SHAKE)
+                        .build();
+
+                Toast.makeText(this, "Shake", Toast.LENGTH_SHORT).show();
+                return true;
+
+            case R.id.hinge:
+                if(!jumperFab.isShown()){
+                    jumperFab.show();
+                }
+
+                new JumperObject.Builder(this)
+                        .setJumperScrollView(jumperScrollView)
+                        .setJumperFab(jumperFab)
+                        .setSpeedScroll(2000)
+                        .setAnimCloseTechnique(JumperAnimType.HINGE)
+                        .build();
+
+                Toast.makeText(this, "HInge", Toast.LENGTH_SHORT).show();
+                return true;
+
+
             default:
                 return super.onOptionsItemSelected(item);
 

@@ -10,7 +10,13 @@ public enum JumperAnimType {
     RUBBERBAND(Techniques.RubberBand),
     FADEOUT(Techniques.FadeOut),
     ZOOMOUT(Techniques.ZoomOut),
-    FADEOUTRIGHT(Techniques.FadeOutRight);
+    FADEOUTRIGHT(Techniques.FadeOutRight),
+    BOUNCEINUP(Techniques.BounceInUp),
+    BOUNCEINDOWN(Techniques.BounceInDown),
+    ROLLOUT(Techniques.RollOut),
+    ROTATEOUT(Techniques.RotateOut),
+    SHAKE(Techniques.Shake),
+    HINGE(Techniques.Hinge);
 
     private final Techniques value;
     private JumperAnimType(Techniques value){
