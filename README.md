@@ -1,11 +1,11 @@
 # TopJumperScroll 
 Make Your Fab responsive by your touch :D
-<a href='https://bintray.com/superdiazzz/TopJumperScroll/TopJumperScroll/1.1.1/link'><img src='https://api.bintray.com/packages/superdiazzz/TopJumperScroll/TopJumperScroll/images/download.svg?version=1.1.1'></a>
+<a href='https://bintray.com/superdiazzz/TopJumperScroll/TopJumperScroll/1.2.1/link'><img src='https://api.bintray.com/packages/superdiazzz/TopJumperScroll/TopJumperScroll/images/download.svg?version=1.2.1'></a>
 
 ## Installation
 
 ```bash
-implementation 'com.zulhijananda.jumperscroll:TopJumperScroll:1.1.1'
+implementation 'com.zulhijananda.jumperscroll:TopJumperScroll:1.x.x'
 ```
 
 This module stands on java 8. So, do not forget to use java 1.8 to your build.gradle app 
@@ -81,6 +81,22 @@ new JumperObject.Builder(this)
   .setSpeedScroll(2000)
   .build();
   ```
+  
+  If you want to use animation in your fab, you can do like below
+  ![](demo/fabAnim.gif)
+  
+  and Code snippet like below
+  ```java
+  JumperObject.Builder(this)
+            .setJumperScrollView(nested_scroll_view)
+            .setJumperFab(jumperFab)
+            .setAppBarLayout(appBarLayout)
+            .setSpeedScroll(2000)
+            .setAnimCloseTechnique(JumperAnimType.ZOOMOUT)
+            .build()
+```
+and if you are using AppBar with these animation please add this attribute in your AppBarLayout
+`android:stateListAnimator="@null"`
   
 ## Lisense
 [Apache 2.0](http://www.opensource.org/licenses/apache2.0.php)
