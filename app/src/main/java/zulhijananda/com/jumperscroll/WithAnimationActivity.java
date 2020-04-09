@@ -1,10 +1,11 @@
 package zulhijananda.com.jumperscroll;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import zulhijananda.com.jumperscrollview.JumperAnimType;
 import zulhijananda.com.jumperscrollview.JumperFab;

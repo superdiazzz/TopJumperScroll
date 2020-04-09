@@ -3,13 +3,15 @@ package zulhijananda.com.jumperscrollview;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.os.CountDownTimer;
-import android.support.design.widget.AppBarLayout;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.daimajia.androidanimations.library.Techniques;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSmoothScroller;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.daimajia.androidanimations.library.YoYo;
+import com.google.android.material.appbar.AppBarLayout;
 
 /**
  * Created by N Zul on 7/4/2019.
@@ -23,15 +25,25 @@ public class JumperObject {
                         JumperFab jumperFab,
                         AppBarLayout appBarLayout,
                          int speedScroll,
-                         JumperAnimType techniques){
+                         JumperAnimType techniques,
+                         RecyclerView recyclerView){
 
         this.activity = activity;
 
-        responseJumperScroll(jumperScrollView, jumperFab);
+        if(jumperScrollView != null){
+            responseJumperScroll(jumperScrollView, jumperFab);
+        }
 
-        eventJumperFab(jumperFab, appBarLayout, jumperScrollView, speedScroll, techniques);
+        eventJumperFab(jumperFab, appBarLayout, jumperScrollView, speedScroll, techniques, recyclerView);
 
         eventJumperAppBar(jumperFab, appBarLayout);
+    }
+
+    private void responseRecyclerView(RecyclerView recyclerView) {
+
+        RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
+        LinearLayoutManager llmanager = (LinearLayoutManager) layoutManager;
+        llmanager.scrollToPositionWithOffset(0,0);
     }
 
     private void eventJumperAppBar(JumperFab jumperFab, AppBarLayout appBarLayout) {
@@ -59,12 +71,13 @@ public class JumperObject {
      * @param appBarLayout
      * @param scrollView
      * @param speed
+     * @param recyclerView
      */
     private void eventJumperFab(JumperFab jumperFab,
                                 AppBarLayout appBarLayout,
                                 JumperScrollView scrollView,
                                 int speed,
-                                JumperAnimType techniques) {
+                                JumperAnimType techniques, RecyclerView recyclerView) {
 
         jumperFab.setOnClickListener(v -> {
 
@@ -74,12 +87,25 @@ public class JumperObject {
                     jumperFab.transitionImage(speed-200);
                 }
 
-                ObjectAnimator animator  = ObjectAnimator.ofInt(scrollView, "scrollY", 0);
-                animator.setDuration(speed);
-                animator.start();
+                if(recyclerView != null){
 
 
+                    RecyclerView.SmoothScroller smoothScroller = new LinearSmoothScroller(activity) {
+                        @Override protected int getVerticalSnapPreference() {
+                            return LinearSmoothScroller.SNAP_TO_START;
+                        }
+                    };
+                    smoothScroller.setTargetPosition(0);
+                    LinearLayoutManager linearLayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                    linearLayoutManager.startSmoothScroll(smoothScroller);
+                    //responseRecyclerView(recyclerView);
+                }
 
+                if(scrollView != null){
+                    ObjectAnimator animator  = ObjectAnimator.ofInt(scrollView, "scrollY", 0);
+                    animator.setDuration(speed);
+                    animator.start();
+                }
 
                 if(techniques != null){
                     YoYo.with(techniques.getValue())
@@ -92,24 +118,13 @@ public class JumperObject {
                     appBarLayout.postDelayed(() -> appBarLayout.setExpanded(true), speed-200);
                 }
 
-                /*new CountDownTimer(speed, 20){
-                    @Override
-                    public void onTick(long millisUntilFinished) {
-                        scrollView.scrollTo(0, (int) (speed - millisUntilFinished));
-                    }
-
-                    @Override
-                    public void onFinish() {
-
-                        if(appBarLayout != null){
-                            appBarLayout.setExpanded(true);
-                        }
-                    }
-                }.start();*/
-
             }else {
-                scrollView.scrollTo(0, 0);
-                scrollView.fullScroll(View.FOCUS_UP);
+
+                if(scrollView != null){
+                    scrollView.scrollTo(0, 0);
+                    scrollView.fullScroll(View.FOCUS_UP);
+                }
+
 
                 if(appBarLayout != null){
                     appBarLayout.setExpanded(true);
@@ -146,6 +161,7 @@ public class JumperObject {
         private AppBarLayout appBarLayout;
         private JumperScrollView jumperScrollView;
         private JumperFab jumperFab;
+        private RecyclerView recyclerView;
         private int speedScroll = 0;
         private JumperAnimType animCloseTechnique;
 
@@ -173,6 +189,17 @@ public class JumperObject {
             this.jumperScrollView = jumperScrollView;
             return  this;
         }
+
+        /**
+         * connecting with your recyclerview
+         * @param recyclerView
+         * @return
+         */
+        public Builder setJumperRecyclerView(RecyclerView recyclerView){
+            this.recyclerView = recyclerView;
+            return this;
+        }
+
 
         /**
          * Your FloatingActionBar
@@ -206,7 +233,7 @@ public class JumperObject {
 
 
         public JumperObject build(){
-            return new JumperObject(activity, jumperScrollView, jumperFab, appBarLayout, speedScroll, animCloseTechnique);
+            return new JumperObject(activity, jumperScrollView, jumperFab, appBarLayout, speedScroll, animCloseTechnique, recyclerView);
         }
 
 

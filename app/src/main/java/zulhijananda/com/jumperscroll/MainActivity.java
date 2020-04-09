@@ -1,11 +1,11 @@
 package zulhijananda.com.jumperscroll;
 
 import android.content.Intent;
-import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import zulhijananda.com.jumperscrollview.JumperFab;
 import zulhijananda.com.jumperscrollview.JumperObject;
@@ -21,11 +21,20 @@ public class MainActivity extends AppCompatActivity {
         JumperScrollView jumperScrollView = findViewById(R.id.scrollv);
         JumperFab jumperFab = findViewById(R.id.jumperFab);
 
+
         new JumperObject.Builder(this)
+                .setJumperScrollView(jumperScrollView)
                 .setJumperScrollView(jumperScrollView)
                 .setJumperFab(jumperFab)
                 .setSpeedScroll(2000)
                 .build();
+
+
+//        new JumperObject.Builder(this)
+//                .setJumperScrollView(jumperScrollView)
+//                .setJumperFab(jumperFab)
+//                .setSpeedScroll(2000)
+//                .build();
 
     }
 
@@ -50,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, WithAnimationActivity.class));
                 return true;
 
+            case R.id.withRecyclerview:
+                startActivity(new Intent(this, WithRecyclerViewActivity.class));
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

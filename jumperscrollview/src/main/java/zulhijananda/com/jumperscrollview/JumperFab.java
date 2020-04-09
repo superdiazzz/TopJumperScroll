@@ -4,9 +4,10 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.support.design.widget.FloatingActionButton;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
  * Created by N Zul on 7/4/2019.
