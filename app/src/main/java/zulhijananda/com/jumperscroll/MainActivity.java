@@ -22,12 +22,15 @@ public class MainActivity extends AppCompatActivity {
         JumperFab jumperFab = findViewById(R.id.jumperFab);
 
 
-        new JumperObject.Builder(this)
-                .setJumperScrollView(jumperScrollView)
-                .setJumperScrollView(jumperScrollView)
-                .setJumperFab(jumperFab)
-                .setSpeedScroll(2000)
-                .build();
+        try {
+            new JumperObject.Builder(this)
+                    .setJumperScrollView(jumperScrollView)
+                    .setJumperFab(jumperFab)
+                    .setSpeedScroll(2000)
+                    .build();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
 //        new JumperObject.Builder(this)

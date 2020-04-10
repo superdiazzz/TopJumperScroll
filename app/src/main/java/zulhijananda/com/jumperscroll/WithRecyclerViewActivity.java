@@ -6,11 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+
 import java.util.ArrayList;
 
 import zulhijananda.com.jumperscroll.adapter.FoodAdapter;
 import zulhijananda.com.jumperscroll.data.Food;
-import zulhijananda.com.jumperscrollview.JumperFab;
+import zulhijananda.com.jumperscrollview.JumperAnimType;
 import zulhijananda.com.jumperscrollview.JumperObject;
 
 public class WithRecyclerViewActivity extends AppCompatActivity {
@@ -26,12 +28,34 @@ public class WithRecyclerViewActivity extends AppCompatActivity {
         loadFood();
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview_main);
-        JumperFab jumperFab = findViewById(R.id.jumperFab);
-        new JumperObject.Builder(this)
-                .setJumperRecyclerView(recyclerView)
-                .setJumperFab(jumperFab)
-                .setSpeedScroll(2000)
-                .build();
+        //JumperFab jumperFab = findViewById(R.id.jumperFab);
+        ExtendedFloatingActionButton fab = findViewById(R.id.totop_btn);
+
+        try {
+
+            // With JumperFAB
+
+//            new JumperObject.Builder(this)
+//                    .setJumperRecyclerView(recyclerView)
+//                    .setJumperFab(jumperFab)
+//                    .setSpeedScroll(2000)
+//                    .build();
+
+
+            // With Material Button
+
+            new JumperObject.Builder(this)
+                    .setJumperRecyclerView(recyclerView)
+                    .setCustomMaterialButton(fab)
+                    .setSpeedScroll(3000)
+                    .setDisplayThreshold(15)
+                    .setAnimStartTechnique(JumperAnimType.LANDING)
+                    .setAnimCloseTechnique(JumperAnimType.FADEOUTDOWN)
+                    .build();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -45,6 +69,28 @@ public class WithRecyclerViewActivity extends AppCompatActivity {
     private void loadFood() {
 
         // load food
+        listOfFoods.add(new Food("Coffe", "Kopi tora bika ala kapucino ya ya ya ahoy", R.drawable.coffee_pot));
+        listOfFoods.add(new Food("Esspresso", "Kopi tora bika ala kapucino ya ya ya ahoy", R.drawable.espresso));
+        listOfFoods.add(new Food("Friech fries", "Heat of inches of vegetable oil", R.drawable.french_fries));
+        listOfFoods.add(new Food("Honey", "I love this, pour to your cup", R.drawable.honey));
+        listOfFoods.add(new Food("Strawberry", "So this is what harvested every springs", R.drawable.strawberry_ice_cream));
+        listOfFoods.add(new Food("Sugar cube", "This is so sweets!", R.drawable.sugar_cubes));
+        listOfFoods.add(new Food("Coffe", "Kopi tora bika ala kapucino ya ya ya ahoy", R.drawable.coffee_pot));
+        listOfFoods.add(new Food("Esspresso", "Kopi tora bika ala kapucino ya ya ya ahoy", R.drawable.espresso));
+        listOfFoods.add(new Food("Friech fries", "Heat of inches of vegetable oil", R.drawable.french_fries));
+        listOfFoods.add(new Food("Honey", "I love this, pour to your cup", R.drawable.honey));
+        listOfFoods.add(new Food("Honey", "I love this, pour to your cup", R.drawable.honey));
+        listOfFoods.add(new Food("Strawberry", "So this is what harvested every springs", R.drawable.strawberry_ice_cream));
+        listOfFoods.add(new Food("Sugar cube", "This is so sweets!", R.drawable.sugar_cubes));
+        listOfFoods.add(new Food("Coffe", "Kopi tora bika ala kapucino ya ya ya ahoy", R.drawable.coffee_pot));
+        listOfFoods.add(new Food("Coffe", "Kopi tora bika ala kapucino ya ya ya ahoy", R.drawable.coffee_pot));
+        listOfFoods.add(new Food("Esspresso", "Kopi tora bika ala kapucino ya ya ya ahoy", R.drawable.espresso));
+        listOfFoods.add(new Food("Friech fries", "Heat of inches of vegetable oil", R.drawable.french_fries));
+        listOfFoods.add(new Food("Honey", "I love this, pour to your cup", R.drawable.honey));
+        listOfFoods.add(new Food("Coffe", "Kopi tora bika ala kapucino ya ya ya ahoy", R.drawable.coffee_pot));
+        listOfFoods.add(new Food("Esspresso", "Kopi tora bika ala kapucino ya ya ya ahoy", R.drawable.espresso));
+        listOfFoods.add(new Food("Friech fries", "Heat of inches of vegetable oil", R.drawable.french_fries));
+        listOfFoods.add(new Food("Honey", "I love this, pour to your cup", R.drawable.honey));
         listOfFoods.add(new Food("Coffe", "Kopi tora bika ala kapucino ya ya ya ahoy", R.drawable.coffee_pot));
         listOfFoods.add(new Food("Esspresso", "Kopi tora bika ala kapucino ya ya ya ahoy", R.drawable.espresso));
         listOfFoods.add(new Food("Friech fries", "Heat of inches of vegetable oil", R.drawable.french_fries));

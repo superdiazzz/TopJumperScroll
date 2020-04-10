@@ -3,30 +3,42 @@ package zulhijananda.com.jumperscrollview;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.os.Handler;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.daimajia.androidanimations.library.YoYo;
 import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.button.MaterialButton;
 
 /**
  * Created by N Zul on 7/4/2019.
  */
 public class JumperObject {
 
+
+    public static final int DEFAULT_DISPLAY_THRESHOLD_NUM = 5;
+
+    private int displayThresholdNum;
+
     private Activity activity;
+    private boolean display = false;
 
     private JumperObject(Activity activity,
-                        JumperScrollView jumperScrollView,
-                        JumperFab jumperFab,
-                        AppBarLayout appBarLayout,
+                         JumperScrollView jumperScrollView,
+                         JumperFab jumperFab,
+                         AppBarLayout appBarLayout,
                          int speedScroll,
-                         JumperAnimType techniques,
-                         RecyclerView recyclerView){
+                         JumperAnimType endTechniques,
+                         RecyclerView recyclerView,
+                         MaterialButton customMaterialButton,
+                         JumperAnimType startTechniques,
+                         int displayThreshold) throws Exception {
 
         this.activity = activity;
 
@@ -34,7 +46,16 @@ public class JumperObject {
             responseJumperScroll(jumperScrollView, jumperFab);
         }
 
-        eventJumperFab(jumperFab, appBarLayout, jumperScrollView, speedScroll, techniques, recyclerView);
+        eventJumperFab(
+                jumperFab,
+                appBarLayout,
+                jumperScrollView,
+                speedScroll,
+                endTechniques,
+                recyclerView,
+                customMaterialButton,
+                startTechniques,
+                displayThreshold);
 
         eventJumperAppBar(jumperFab, appBarLayout);
     }
@@ -77,64 +98,204 @@ public class JumperObject {
                                 AppBarLayout appBarLayout,
                                 JumperScrollView scrollView,
                                 int speed,
-                                JumperAnimType techniques, RecyclerView recyclerView) {
+                                JumperAnimType endTechniques,
+                                RecyclerView recyclerView,
+                                MaterialButton customMaterialButton,
+                                JumperAnimType startTechniques,
+                                int positionDisplayThreshold) throws Exception {
 
-        jumperFab.setOnClickListener(v -> {
+        // -- validation --
 
-            if(speed != 0){
+        validation(jumperFab, customMaterialButton, positionDisplayThreshold);
 
-                if(jumperFab.getJumpingImage() != null){
-                    jumperFab.transitionImage(speed-200);
-                }
+        // -- Custom Material Button --
 
-                if(recyclerView != null){
+        if(customMaterialButton != null){
 
+            if(recyclerView != null){
 
-                    RecyclerView.SmoothScroller smoothScroller = new LinearSmoothScroller(activity) {
-                        @Override protected int getVerticalSnapPreference() {
-                            return LinearSmoothScroller.SNAP_TO_START;
+                customMaterialButton.setVisibility(View.GONE);
+
+                customMaterialButton.setOnClickListener(view -> {
+
+                    if(speed != 0){
+
+                        if(endTechniques != null){
+
+                            MyYoyo.with(endTechniques)
+                                    .duration(speed)
+                                    .playOn(customMaterialButton);
                         }
-                    };
-                    smoothScroller.setTargetPosition(0);
-                    LinearLayoutManager linearLayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
-                    linearLayoutManager.startSmoothScroll(smoothScroller);
-                    //responseRecyclerView(recyclerView);
-                }
-
-                if(scrollView != null){
-                    ObjectAnimator animator  = ObjectAnimator.ofInt(scrollView, "scrollY", 0);
-                    animator.setDuration(speed);
-                    animator.start();
-                }
-
-                if(techniques != null){
-                    YoYo.with(techniques.getValue())
-                            .duration(speed)
-                            .playOn(jumperFab);
-
-                }
-
-                if(appBarLayout != null){
-                    appBarLayout.postDelayed(() -> appBarLayout.setExpanded(true), speed-200);
-                }
-
-            }else {
-
-                if(scrollView != null){
-                    scrollView.scrollTo(0, 0);
-                    scrollView.fullScroll(View.FOCUS_UP);
-                }
 
 
-                if(appBarLayout != null){
-                    appBarLayout.setExpanded(true);
-                }
+                        RecyclerView.SmoothScroller smoothScroller = new LinearSmoothScroller(activity) {
+                            @Override protected int getVerticalSnapPreference() {
+                                return LinearSmoothScroller.SNAP_TO_START;
+                            }
+                        };
+                        smoothScroller.setTargetPosition(0);
+                        LinearLayoutManager linearLayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                        linearLayoutManager.startSmoothScroll(smoothScroller);
+                        //responseRecyclerView(recyclerView);
+
+                        if(scrollView != null){
+                            ObjectAnimator animator  = ObjectAnimator.ofInt(scrollView, "scrollY", 0);
+                            animator.setDuration(speed);
+                            animator.start();
+                        }
+
+                        if(appBarLayout != null){
+                            appBarLayout.postDelayed(() -> appBarLayout.setExpanded(true), speed-200);
+                        }
+
+                    }
+
+                    Log.d("CUSTOMMATERIALBUTTON", "diklik!");
+                    new Handler().postDelayed(() -> display = false, 1000);
+
+                });
+
+
+                recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+                    @Override
+                    public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                        super.onScrollStateChanged(recyclerView, newState);
+
+                        LinearLayoutManager layoutManager = (LinearLayoutManager)recyclerView.getLayoutManager();
+
+                        assert layoutManager != null;
+                        int pos = layoutManager.findLastVisibleItemPosition();
+                        Log.d("JUMPER", ""+pos+" display : " + display);
+
+                        if(pos > displayThresholdNum && !display){
+
+                            customMaterialButton.setVisibility(View.VISIBLE);
+
+                            if(startTechniques != null){
+                                MyYoyo.with(startTechniques)  // EX: BOUNCEINUP
+                                        .duration(speed)
+                                        .playOn(customMaterialButton);
+                            }
+                            display = true;
+                        }
+
+                        if(pos <=3){
+                            customMaterialButton.setVisibility(View.GONE);
+                            display = false;
+                        }
+
+                    }
+
+                    @Override
+                    public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                        super.onScrolled(recyclerView, dx, dy);
+
+                    }
+                });
+
+
+
+            }
+            else{
+
+                customMaterialButton.setOnClickListener(view -> {
+
+                    if(scrollView != null){
+                        scrollView.scrollTo(0, 0);
+                        scrollView.fullScroll(View.FOCUS_UP);
+                    }
+
+
+                    if(appBarLayout != null){
+                        appBarLayout.setExpanded(true);
+                    }
+                });
+
 
             }
 
+        }
+
+        // -- Jumper FAB --
+
+        if(jumperFab != null){
+
+            jumperFab.setOnClickListener(v -> {
+
+                if(speed != 0){
+
+                    if(jumperFab.getJumpingImage() != null){
+                        jumperFab.transitionImage(speed-200);
+                    }
+
+                    if(recyclerView != null){
 
 
-        });
+                        RecyclerView.SmoothScroller smoothScroller = new LinearSmoothScroller(activity) {
+                            @Override protected int getVerticalSnapPreference() {
+                                return LinearSmoothScroller.SNAP_TO_START;
+                            }
+                        };
+                        smoothScroller.setTargetPosition(0);
+                        LinearLayoutManager linearLayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                        linearLayoutManager.startSmoothScroll(smoothScroller);
+                        //responseRecyclerView(recyclerView);
+                    }
+
+                    if(scrollView != null){
+                        ObjectAnimator animator  = ObjectAnimator.ofInt(scrollView, "scrollY", 0);
+                        animator.setDuration(speed);
+                        animator.start();
+                    }
+
+                    if(endTechniques != null){
+                        MyYoyo.with(endTechniques)
+                                .duration(speed)
+                                .playOn(jumperFab);
+
+                    }
+
+                    if(appBarLayout != null){
+                        appBarLayout.postDelayed(() -> appBarLayout.setExpanded(true), speed-200);
+                    }
+
+                }else {
+
+                    if(scrollView != null){
+                        scrollView.scrollTo(0, 0);
+                        scrollView.fullScroll(View.FOCUS_UP);
+                    }
+
+
+                    if(appBarLayout != null){
+                        appBarLayout.setExpanded(true);
+                    }
+
+                }
+
+
+
+            });
+
+        }
+
+
+    }
+
+    private void validation(JumperFab jumperFab, MaterialButton customMaterialButton, int displayThreshold) throws JumperException {
+        if(customMaterialButton != null && jumperFab != null){
+            throw new JumperException("You have to choose using MaterialButton or JumperFAB! Can not use both of them");
+        }
+
+        if(customMaterialButton == null && jumperFab == null){
+            throw new JumperException("You need JumperFab or MaterialButton to Jumpt to Top!");
+        }
+
+        if(displayThreshold != 0){
+            displayThresholdNum = displayThreshold;
+        }else{
+            displayThresholdNum = DEFAULT_DISPLAY_THRESHOLD_NUM;
+        }
 
     }
 
@@ -164,6 +325,9 @@ public class JumperObject {
         private RecyclerView recyclerView;
         private int speedScroll = 0;
         private JumperAnimType animCloseTechnique;
+        private JumperAnimType animStartTechnique;
+        private MaterialButton customMaterialButton;
+        private int displayThreshold = 0;
 
         public Builder(Activity activity){
             this.activity = activity;
@@ -231,9 +395,36 @@ public class JumperObject {
             return this;
         }
 
+        public Builder setAnimStartTechnique(JumperAnimType startTechnique){
+            this.animStartTechnique = startTechnique;
+            return this;
+        }
 
-        public JumperObject build(){
-            return new JumperObject(activity, jumperScrollView, jumperFab, appBarLayout, speedScroll, animCloseTechnique, recyclerView);
+        /**
+         * determining your Custom button will be display at any index
+         * @param displayThreshold
+         * @return
+         */
+        public Builder setDisplayThreshold(int displayThreshold){
+            this.displayThreshold = displayThreshold;
+            return this;
+        }
+
+        /**
+         * with custom material Button
+         * @param materialButton
+         * @return
+         */
+        public Builder setCustomMaterialButton(MaterialButton materialButton){
+            this.customMaterialButton = materialButton;
+            return this;
+        }
+
+
+        public JumperObject build() throws Exception {
+            return new JumperObject(activity, jumperScrollView, jumperFab, appBarLayout,
+                    speedScroll, animCloseTechnique, recyclerView, customMaterialButton, animStartTechnique,
+                    displayThreshold);
         }
 
 

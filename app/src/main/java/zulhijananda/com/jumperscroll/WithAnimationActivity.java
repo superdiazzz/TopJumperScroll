@@ -29,11 +29,15 @@ public class WithAnimationActivity extends AppCompatActivity {
         jumperScrollView = findViewById(R.id.scrollv);
         jumperFab = findViewById(R.id.jumperFab);
 
-        myJumperObj = new JumperObject.Builder(this)
-                    .setJumperScrollView(jumperScrollView)
-                    .setJumperFab(jumperFab)
-                    .setSpeedScroll(2000)
-                    .build();
+        try {
+            myJumperObj = new JumperObject.Builder(this)
+                        .setJumperScrollView(jumperScrollView)
+                        .setJumperFab(jumperFab)
+                        .setSpeedScroll(2000)
+                        .build();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -54,12 +58,16 @@ public class WithAnimationActivity extends AppCompatActivity {
                     jumperFab.show();
                 }
 
-                new JumperObject.Builder(this)
-                        .setJumperScrollView(jumperScrollView)
-                        .setJumperFab(jumperFab)
-                        .setSpeedScroll(2000)
-                        .setAnimCloseTechnique(JumperAnimType.TAKINGOFF)
-                        .build();
+                try {
+                    new JumperObject.Builder(this)
+                            .setJumperScrollView(jumperScrollView)
+                            .setJumperFab(jumperFab)
+                            .setSpeedScroll(2000)
+                            .setAnimCloseTechnique(JumperAnimType.TAKINGOFF)
+                            .build();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
                 Toast.makeText(this, "Taking off", Toast.LENGTH_SHORT).show();
 
@@ -71,12 +79,16 @@ public class WithAnimationActivity extends AppCompatActivity {
                     jumperFab.show();
                 }
 
-                new JumperObject.Builder(this)
-                        .setJumperScrollView(jumperScrollView)
-                        .setJumperFab(jumperFab)
-                        .setSpeedScroll(2000)
-                        .setAnimCloseTechnique(JumperAnimType.FLIPOUTY)
-                        .build();
+                try {
+                    new JumperObject.Builder(this)
+                            .setJumperScrollView(jumperScrollView)
+                            .setJumperFab(jumperFab)
+                            .setSpeedScroll(2000)
+                            .setAnimCloseTechnique(JumperAnimType.FLIPOUTY)
+                            .build();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
                 Toast.makeText(this, "Flip out y", Toast.LENGTH_SHORT).show();
 
@@ -88,12 +100,16 @@ public class WithAnimationActivity extends AppCompatActivity {
                     jumperFab.show();
                 }
 
-                new JumperObject.Builder(this)
-                        .setJumperScrollView(jumperScrollView)
-                        .setJumperFab(jumperFab)
-                        .setSpeedScroll(2000)
-                        .setAnimCloseTechnique(JumperAnimType.RUBBERBAND)
-                        .build();
+                try {
+                    new JumperObject.Builder(this)
+                            .setJumperScrollView(jumperScrollView)
+                            .setJumperFab(jumperFab)
+                            .setSpeedScroll(2000)
+                            .setAnimCloseTechnique(JumperAnimType.RUBBERBAND)
+                            .build();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
                 Toast.makeText(this, "Rubberband", Toast.LENGTH_SHORT).show();
 
@@ -105,12 +121,16 @@ public class WithAnimationActivity extends AppCompatActivity {
                     jumperFab.show();
                 }
 
-                new JumperObject.Builder(this)
-                        .setJumperScrollView(jumperScrollView)
-                        .setJumperFab(jumperFab)
-                        .setSpeedScroll(2000)
-                        .setAnimCloseTechnique(JumperAnimType.FADEOUT)
-                        .build();
+                try {
+                    new JumperObject.Builder(this)
+                            .setJumperScrollView(jumperScrollView)
+                            .setJumperFab(jumperFab)
+                            .setSpeedScroll(2000)
+                            .setAnimCloseTechnique(JumperAnimType.FADEOUT)
+                            .build();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
                 Toast.makeText(this, "Fade Out", Toast.LENGTH_SHORT).show();
 
@@ -122,12 +142,16 @@ public class WithAnimationActivity extends AppCompatActivity {
                     jumperFab.show();
                 }
 
-                new JumperObject.Builder(this)
-                        .setJumperScrollView(jumperScrollView)
-                        .setJumperFab(jumperFab)
-                        .setSpeedScroll(2000)
-                        .setAnimCloseTechnique(JumperAnimType.ZOOMOUT)
-                        .build();
+                try {
+                    new JumperObject.Builder(this)
+                            .setJumperScrollView(jumperScrollView)
+                            .setJumperFab(jumperFab)
+                            .setSpeedScroll(2000)
+                            .setAnimCloseTechnique(JumperAnimType.ZOOMOUT)
+                            .build();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
                 Toast.makeText(this, "Zoom Out", Toast.LENGTH_SHORT).show();
                 return true;
@@ -139,12 +163,16 @@ public class WithAnimationActivity extends AppCompatActivity {
                     jumperFab.show();
                 }
 
-                new JumperObject.Builder(this)
-                        .setJumperScrollView(jumperScrollView)
-                        .setJumperFab(jumperFab)
-                        .setSpeedScroll(2000)
-                        .setAnimCloseTechnique(JumperAnimType.FADEOUTRIGHT)
-                        .build();
+                try {
+                    new JumperObject.Builder(this)
+                            .setJumperScrollView(jumperScrollView)
+                            .setJumperFab(jumperFab)
+                            .setSpeedScroll(2000)
+                            .setAnimCloseTechnique(JumperAnimType.FADEOUTRIGHT)
+                            .build();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
                 Toast.makeText(this, "Fade Out Right", Toast.LENGTH_SHORT).show();
                 return true;
@@ -155,12 +183,16 @@ public class WithAnimationActivity extends AppCompatActivity {
                     jumperFab.show();
                 }
 
-                new JumperObject.Builder(this)
-                        .setJumperScrollView(jumperScrollView)
-                        .setJumperFab(jumperFab)
-                        .setSpeedScroll(2000)
-                        .setAnimCloseTechnique(JumperAnimType.BOUNCEINUP)
-                        .build();
+                try {
+                    new JumperObject.Builder(this)
+                            .setJumperScrollView(jumperScrollView)
+                            .setJumperFab(jumperFab)
+                            .setSpeedScroll(2000)
+                            .setAnimCloseTechnique(JumperAnimType.BOUNCEINUP)
+                            .build();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
                 Toast.makeText(this, "Bounce in up", Toast.LENGTH_SHORT).show();
                 return true;
@@ -170,12 +202,16 @@ public class WithAnimationActivity extends AppCompatActivity {
                    jumperFab.show();
                }
 
-               new JumperObject.Builder(this)
-                       .setJumperScrollView(jumperScrollView)
-                       .setJumperFab(jumperFab)
-                       .setSpeedScroll(2000)
-                       .setAnimCloseTechnique(JumperAnimType.BOUNCEINDOWN)
-                       .build();
+               try {
+                   new JumperObject.Builder(this)
+                           .setJumperScrollView(jumperScrollView)
+                           .setJumperFab(jumperFab)
+                           .setSpeedScroll(2000)
+                           .setAnimCloseTechnique(JumperAnimType.BOUNCEINDOWN)
+                           .build();
+               } catch (Exception e) {
+                   e.printStackTrace();
+               }
 
                Toast.makeText(this, "Bounce in Down", Toast.LENGTH_SHORT).show();
                return true;
@@ -185,12 +221,16 @@ public class WithAnimationActivity extends AppCompatActivity {
                     jumperFab.show();
                 }
 
-                new JumperObject.Builder(this)
-                        .setJumperScrollView(jumperScrollView)
-                        .setJumperFab(jumperFab)
-                        .setSpeedScroll(2000)
-                        .setAnimCloseTechnique(JumperAnimType.ROLLOUT)
-                        .build();
+                try {
+                    new JumperObject.Builder(this)
+                            .setJumperScrollView(jumperScrollView)
+                            .setJumperFab(jumperFab)
+                            .setSpeedScroll(2000)
+                            .setAnimCloseTechnique(JumperAnimType.ROLLOUT)
+                            .build();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
                 Toast.makeText(this, "Roll out", Toast.LENGTH_SHORT).show();
                 return true;
@@ -200,12 +240,16 @@ public class WithAnimationActivity extends AppCompatActivity {
                     jumperFab.show();
                 }
 
-                new JumperObject.Builder(this)
-                        .setJumperScrollView(jumperScrollView)
-                        .setJumperFab(jumperFab)
-                        .setSpeedScroll(2000)
-                        .setAnimCloseTechnique(JumperAnimType.ROTATEOUT)
-                        .build();
+                try {
+                    new JumperObject.Builder(this)
+                            .setJumperScrollView(jumperScrollView)
+                            .setJumperFab(jumperFab)
+                            .setSpeedScroll(2000)
+                            .setAnimCloseTechnique(JumperAnimType.ROTATEOUT)
+                            .build();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
                 Toast.makeText(this, "Rotate Out", Toast.LENGTH_SHORT).show();
                 return true;
@@ -215,12 +259,16 @@ public class WithAnimationActivity extends AppCompatActivity {
                     jumperFab.show();
                 }
 
-                new JumperObject.Builder(this)
-                        .setJumperScrollView(jumperScrollView)
-                        .setJumperFab(jumperFab)
-                        .setSpeedScroll(2000)
-                        .setAnimCloseTechnique(JumperAnimType.SHAKE)
-                        .build();
+                try {
+                    new JumperObject.Builder(this)
+                            .setJumperScrollView(jumperScrollView)
+                            .setJumperFab(jumperFab)
+                            .setSpeedScroll(2000)
+                            .setAnimCloseTechnique(JumperAnimType.SHAKE)
+                            .build();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
                 Toast.makeText(this, "Shake", Toast.LENGTH_SHORT).show();
                 return true;
@@ -230,12 +278,16 @@ public class WithAnimationActivity extends AppCompatActivity {
                     jumperFab.show();
                 }
 
-                new JumperObject.Builder(this)
-                        .setJumperScrollView(jumperScrollView)
-                        .setJumperFab(jumperFab)
-                        .setSpeedScroll(2000)
-                        .setAnimCloseTechnique(JumperAnimType.HINGE)
-                        .build();
+                try {
+                    new JumperObject.Builder(this)
+                            .setJumperScrollView(jumperScrollView)
+                            .setJumperFab(jumperFab)
+                            .setSpeedScroll(2000)
+                            .setAnimCloseTechnique(JumperAnimType.HINGE)
+                            .build();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
                 Toast.makeText(this, "HInge", Toast.LENGTH_SHORT).show();
                 return true;
