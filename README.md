@@ -1,6 +1,6 @@
 # TopJumperScroll 
 Make Your Fab responsive by your touch :D
-<a href='https://bintray.com/superdiazzz/TopJumperScroll/TopJumperScroll/1.2.1/link'><img src='https://api.bintray.com/packages/superdiazzz/TopJumperScroll/TopJumperScroll/images/download.svg?version=1.2.1'></a>
+<a href="https://bintray.com/superdiazzz/TopJumperScroll/TopJumperScroll/1.3.0/link"><img src="https://api.bintray.com/packages/superdiazzz/TopJumperScroll/TopJumperScroll/images/download.svg?version=1.3.0"/></a>
 
 ## Installation
 
