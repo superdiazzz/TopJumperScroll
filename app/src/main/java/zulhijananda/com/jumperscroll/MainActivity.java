@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,6 +21,13 @@ public class MainActivity extends AppCompatActivity {
 
         JumperScrollView jumperScrollView = findViewById(R.id.scrollv);
         JumperFab jumperFab = findViewById(R.id.jumperFab);
+        
+        jumperFab.setJumperFabCallback(new JumperFab.JumperFabCallback() {
+            @Override
+            public void fabOnClick() {
+                Toast.makeText(MainActivity.this, "Jumper Callback dicalling after performing its function", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
         try {

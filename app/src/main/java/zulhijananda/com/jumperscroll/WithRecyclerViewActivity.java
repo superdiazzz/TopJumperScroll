@@ -1,6 +1,7 @@
 package zulhijananda.com.jumperscroll;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 import zulhijananda.com.jumperscroll.adapter.FoodAdapter;
 import zulhijananda.com.jumperscroll.data.Food;
 import zulhijananda.com.jumperscrollview.JumperAnimType;
+import zulhijananda.com.jumperscrollview.JumperFab;
 import zulhijananda.com.jumperscrollview.JumperObject;
 
 public class WithRecyclerViewActivity extends AppCompatActivity {
@@ -28,30 +30,39 @@ public class WithRecyclerViewActivity extends AppCompatActivity {
         loadFood();
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview_main);
-        //JumperFab jumperFab = findViewById(R.id.jumperFab);
-        ExtendedFloatingActionButton fab = findViewById(R.id.totop_btn);
+        JumperFab jumperFab = findViewById(R.id.jumperFab);
+        //ExtendedFloatingActionButton fab = findViewById(R.id.totop_btn);
 
+        jumperFab.setJumperFabCallback(new JumperFab.JumperFabCallback() {
+            @Override
+            public void fabOnClick() {
+                Toast.makeText(WithRecyclerViewActivity.this, "Kepanggil", Toast.LENGTH_SHORT).show();
+            }
+        });
+        
         try {
 
             // With JumperFAB
 
-//            new JumperObject.Builder(this)
-//                    .setJumperRecyclerView(recyclerView)
-//                    .setJumperFab(jumperFab)
-//                    .setSpeedScroll(2000)
-//                    .build();
+            new JumperObject.Builder(this)
+                    .setJumperRecyclerView(recyclerView)
+                    .setJumperFab(jumperFab)
+                    .hideWhenScrollUp(true)
+                    .setSpeedScroll(2000)
+                    .build();
 
 
             // With Material Button
 
-            new JumperObject.Builder(this)
-                    .setJumperRecyclerView(recyclerView)
-                    .setCustomMaterialButton(fab)
-                    .setSpeedScroll(3000)
-                    .setDisplayThreshold(15)
-                    .setAnimStartTechnique(JumperAnimType.LANDING)
-                    .setAnimCloseTechnique(JumperAnimType.FADEOUTDOWN)
-                    .build();
+//            new JumperObject.Builder(this)
+//                    .setJumperRecyclerView(recyclerView)
+//                    .setCustomMaterialButton(fab)
+//                    .setSpeedScroll(3000)
+//                    .setDisplayThreshold(15)
+//                    .hideWhenScrollUp(true)
+//                    .setAnimStartTechnique(JumperAnimType.LANDING)
+//                    .setAnimCloseTechnique(JumperAnimType.FADEOUTDOWN)
+//                    .build();
 
         } catch (Exception e) {
             e.printStackTrace();

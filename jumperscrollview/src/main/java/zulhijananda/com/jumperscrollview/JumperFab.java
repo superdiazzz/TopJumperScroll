@@ -18,6 +18,12 @@ public class JumperFab extends FloatingActionButton {
     private Drawable defaultImage;
     private TypedArray ta;
     private int colorBackground;
+    JumperFabCallback jumperFabCallback;
+
+
+    public interface JumperFabCallback{
+        void fabOnClick();
+    }
 
     public JumperFab(Context context) {
         super(context);
@@ -87,5 +93,9 @@ public class JumperFab extends FloatingActionButton {
         final TypedValue value = new TypedValue ();
         context.getTheme ().resolveAttribute (R.attr.colorAccent, value, true);
         return value.data;
+    }
+
+    public void setJumperFabCallback(JumperFabCallback jumperFabCallback) {
+        this.jumperFabCallback = jumperFabCallback;
     }
 }

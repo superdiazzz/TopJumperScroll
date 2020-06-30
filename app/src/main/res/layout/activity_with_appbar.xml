@@ -7,12 +7,12 @@
     android:layout_height="match_parent"
     tools:context="zulhijananda.com.jumperscroll.WithAppbarActivity">
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <android.support.design.widget.CollapsingToolbarLayout
+        <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
@@ -22,9 +22,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:src="@drawable/who_is_this" />
-        </android.support.design.widget.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <zulhijananda.com.jumperscrollview.JumperScrollView
         android:id="@+id/scrollv"

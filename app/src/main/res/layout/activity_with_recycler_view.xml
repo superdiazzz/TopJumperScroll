@@ -13,22 +13,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+    <!--<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/totop_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TO Top"
         app:icon="@drawable/ic_android_black_24dp"
         android:layout_gravity="bottom|center_horizontal"
-        android:layout_margin="4dp" />
+        android:layout_margin="4dp" />-->
 
 
-    <!--<zulhijananda.com.jumperscrollview.JumperFab
+    <zulhijananda.com.jumperscrollview.JumperFab
         android:id="@+id/jumperFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:src="@drawable/ic_vertical_align_top_black_24dp"/>-->
+        android:src="@drawable/ic_vertical_align_top_black_24dp"/>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
