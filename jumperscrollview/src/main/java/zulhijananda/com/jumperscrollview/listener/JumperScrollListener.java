@@ -70,15 +70,20 @@ public class JumperScrollListener extends RecyclerView.OnScrollListener {
                     } else {
                         // scrolling down
                         if(customMaterialButton != null){
-                            customMaterialButton.setVisibility(View.VISIBLE);
-                            MyYoyo.with(this.startAnim)  //JumperAnimType.BOUNCEINUP
-                                    .duration(1000)
-                                    .playOn(customMaterialButton);
+
+                            if(!customMaterialButton.isShown()){
+                                customMaterialButton.setVisibility(View.VISIBLE);
+                                MyYoyo.with(this.startAnim)  //JumperAnimType.BOUNCEINUP
+                                        .duration(1000)
+                                        .playOn(customMaterialButton);
+                            }
                         }
 
                         if(jumperFab != null){
-                            jumperFab.setVisibility(View.VISIBLE);
-                            MyYoyo.with(this.startAnim).duration(1000).playOn(jumperFab);
+                            if(!jumperFab.isShown()){
+                                jumperFab.setVisibility(View.VISIBLE);
+                                MyYoyo.with(this.startAnim).duration(1000).playOn(jumperFab);
+                            }
                         }
 
                     }
