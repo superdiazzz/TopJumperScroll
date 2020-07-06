@@ -5,7 +5,7 @@ publish {
 
     def groupProjectID = 'com.zulhijananda.jumperscroll'
     def artifactProjectID = 'TopJumperScroll'
-    def publishVersionID = '1.4.0'
+    def publishVersionID = '1.4.1'
 
     userOrg = 'superdiazzz'
     repoName = 'TopJumperScroll'

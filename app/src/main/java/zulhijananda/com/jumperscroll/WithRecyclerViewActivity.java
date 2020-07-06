@@ -43,14 +43,14 @@ public class WithRecyclerViewActivity extends AppCompatActivity {
         try {
 
             // With JumperFAB
-
             new JumperObject.Builder(this)
                     .setJumperRecyclerView(recyclerView)
                     .setJumperFab(jumperFab)
                     .hideWhenScrollUp(true)
+                    .setAnimStartTechnique(JumperAnimType.PERSONAL_USE_TRANLATION_Y_UP)
+                    .setAnimCloseTechnique(JumperAnimType.PERSONAL_USE_TRANLATION_Y_BOTTOM)
                     .setSpeedScroll(2000)
                     .build();
-
 
             // With Material Button
 

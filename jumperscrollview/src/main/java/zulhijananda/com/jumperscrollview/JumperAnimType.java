@@ -11,6 +11,8 @@ import zulhijananda.com.jumperscrollview.special.FlipInX;
 import zulhijananda.com.jumperscrollview.special.FlipOutY;
 import zulhijananda.com.jumperscrollview.special.Hinge;
 import zulhijananda.com.jumperscrollview.special.Landing;
+import zulhijananda.com.jumperscrollview.special.PersonalUseTranslationYBottom;
+import zulhijananda.com.jumperscrollview.special.PersonalUseTranslationYUp;
 import zulhijananda.com.jumperscrollview.special.RollOut;
 import zulhijananda.com.jumperscrollview.special.RotateOut;
 import zulhijananda.com.jumperscrollview.special.RubberBand;
@@ -36,7 +38,10 @@ public enum JumperAnimType {
     LANDING(Landing.class),
     FLIPINX(FlipInX.class),
     FADEOUTLEFT(FadeOutLeft.class),
-    FADEOUTDOWN(FadeOutDown.class);
+    FADEOUTDOWN(FadeOutDown.class),
+    PERSONAL_USE_TRANLATION_Y_UP(PersonalUseTranslationYUp.class),
+    PERSONAL_USE_TRANLATION_Y_BOTTOM(PersonalUseTranslationYBottom.class);
+
 
     private Class animatorClazz;
 

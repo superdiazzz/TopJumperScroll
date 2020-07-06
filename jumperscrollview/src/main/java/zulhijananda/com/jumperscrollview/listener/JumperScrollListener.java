@@ -1,6 +1,8 @@
 package zulhijananda.com.jumperscrollview.listener;
 
+import android.animation.ObjectAnimator;
 import android.view.View;
+import android.view.animation.BounceInterpolator;
 import android.widget.AbsListView;
 
 import androidx.annotation.NonNull;
@@ -54,8 +56,8 @@ public class JumperScrollListener extends RecyclerView.OnScrollListener {
                         if(customMaterialButton != null){
                             if (customMaterialButton.isShown()) {
                                 MyYoyo.with(this.endAnim).duration(1000).playOn(customMaterialButton); // jumperAnimType.FADEOUT
+                                customMaterialButton.postDelayed(() -> customMaterialButton.setVisibility(View.GONE), 1000);
                             }
-                            customMaterialButton.setVisibility(View.GONE);
                         }
 
                         if(jumperFab != null){
@@ -63,7 +65,6 @@ public class JumperScrollListener extends RecyclerView.OnScrollListener {
                                 MyYoyo.with(this.endAnim).duration(1000).playOn(jumperFab);
                                 jumperFab.postDelayed(() -> jumperFab.setVisibility(View.GONE), 1000);
                             }
-
                         }
 
 
@@ -73,9 +74,10 @@ public class JumperScrollListener extends RecyclerView.OnScrollListener {
 
                             if(!customMaterialButton.isShown()){
                                 customMaterialButton.setVisibility(View.VISIBLE);
-                                MyYoyo.with(this.startAnim)  //JumperAnimType.BOUNCEINUP
+                                MyYoyo.with(this.startAnim)
                                         .duration(1000)
                                         .playOn(customMaterialButton);
+
                             }
                         }
 
