@@ -1,6 +1,6 @@
 # TopJumperScroll 
 Make Your Fab responsive by your touch :D
-<a href="https://bintray.com/superdiazzz/TopJumperScroll/TopJumperScroll/1.4.0/link"><img src="https://api.bintray.com/packages/superdiazzz/TopJumperScroll/TopJumperScroll/images/download.svg?version=1.4.0"/></a>
+<a href="https://bintray.com/superdiazzz/TopJumperScroll/TopJumperScroll/1.4.2/link"><img src="https://api.bintray.com/packages/superdiazzz/TopJumperScroll/TopJumperScroll/images/download.svg?version=1.4.2"/></a>
 
 ## Installation
 
@@ -70,7 +70,7 @@ And your layout might like this
 </android.support.design.widget.CoordinatorLayout>
 ```
 ## And Result will be
-<a href="https://gifyu.com/image/Elfa"><img src="https://s3.gifyu.com/images/JumperScroll.md.gif" alt="JumperScroll.gif" border="0" /></a>
+<a target="_blank" rel="noopener noreferrer" href="/demo/simple_fab.gif"><img src="/demo/simple_fab.gif" width="350" style="max-width:100%;"></a>
 
 If you use AppBar with CollapsingToolbarLayout, you can connecting it with this module like below
 ```java
@@ -97,6 +97,41 @@ new JumperObject.Builder(this)
 ```
 and if you are using AppBar with these animation please add this attribute in your AppBarLayout
 `android:stateListAnimator="@null"`
+
+## Other Sample
+```java
+protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_with_material_button);
+
+        loadFood();
+
+        RecyclerView recyclerView = findViewById(R.id.recyclerview_main);
+        MaterialButton materialButton = findViewById(R.id.to_top);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        try {
+            new JumperObject.Builder(this)
+                    .setJumperRecyclerView(recyclerView)
+                    .setCustomMaterialButton(materialButton)
+                    .hideWhenScrollUp(true)
+                    .setAnimStartTechnique(JumperAnimType.PERSONAL_USE_TRANLATION_Y_UP)
+                    .setAnimCloseTechnique(JumperAnimType.PERSONAL_USE_TRANLATION_Y_BOTTOM)
+                    .setSpeedScroll(2000)
+                    .build();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        FoodAdapter adapter = new FoodAdapter(listOfFoods);
+        recyclerView.setAdapter(adapter);
+    }
+ ```
+ This will display like below
+
+<a target="_blank" rel="noopener noreferrer" href="/demo/jumper_with_materialcustom.gif"><img src="/demo/jumper_with_materialcustom.gif" width="350" style="max-width:100%;"></a>
+
+
   
 ## Lisense
 [Apache 2.0](http://www.opensource.org/licenses/apache2.0.php)
