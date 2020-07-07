@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".WithMaterialButtonActivity"></activity>
+        <activity android:name=".WithMaterialButtonActivity"
+            android:theme="@style/Theme.MaterialComponents"/>
         <activity android:name=".WithRecyclerViewActivity"
             android:theme="@style/Theme.MaterialComponents"/>
         <activity android:name=".WithAnimationActivity" />

@@ -73,6 +73,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.withRecyclerview:
                 startActivity(new Intent(this, WithRecyclerViewActivity.class));
                 return true;
+
+            case  R.id.withMaterialBtn:
+                startActivity(new Intent(this, WithMaterialButtonActivity.class));
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

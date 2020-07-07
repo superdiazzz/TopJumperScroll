@@ -11,4 +11,8 @@
     <item
         android:id="@+id/withRecyclerview"
         android:title="With RecyclerView"/>
+
+    <item
+        android:id="@+id/withMaterialBtn"
+        android:title="With Material Custom"/>
 </menu>

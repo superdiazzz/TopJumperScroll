@@ -6,4 +6,25 @@
     android:layout_height="match_parent"
     tools:context="zulhijananda.com.jumperscroll.WithMaterialButtonActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/to_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="To Top"
+        android:drawableStart="@drawable/ic_vertical_align_top_black_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="8dp"/>
+
+
+
 </android.support.constraint.ConstraintLayout>
