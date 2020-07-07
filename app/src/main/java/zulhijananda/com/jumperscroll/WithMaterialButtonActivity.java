@@ -29,8 +29,6 @@ public class WithMaterialButtonActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview_main);
         MaterialButton materialButton = findViewById(R.id.to_top);
-
-
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         try {
@@ -46,10 +44,8 @@ public class WithMaterialButtonActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
         FoodAdapter adapter = new FoodAdapter(listOfFoods);
         recyclerView.setAdapter(adapter);
-
     }
 
     private void loadFood() {
