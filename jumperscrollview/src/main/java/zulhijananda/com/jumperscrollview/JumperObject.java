@@ -155,7 +155,7 @@ public class JumperObject {
                         assert linearLayoutManager != null;
                         linearLayoutManager.startSmoothScroll(smoothScroller);
 
-                        if (this.speedScroll != 0) {
+                        if (this.speedScroll != 0 && this.jumperScrollView != null) {
                             ObjectAnimator animator = ObjectAnimator.ofInt(this.jumperScrollView, "scrollY", 0);
                             animator.setDuration(this.speedScroll);
                             animator.start();
