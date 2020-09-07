@@ -150,6 +150,7 @@ public class MyYoyo {
                 public void onAnimationStart(Animator animation) {
                     callback.call(animation);
                 }
+
             });
             return this;
         }

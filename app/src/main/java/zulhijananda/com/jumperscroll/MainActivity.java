@@ -22,12 +22,7 @@ public class MainActivity extends AppCompatActivity {
         JumperScrollView jumperScrollView = findViewById(R.id.scrollv);
         JumperFab jumperFab = findViewById(R.id.jumperFab);
         
-        jumperFab.setJumperFabCallback(new JumperFab.JumperFabCallback() {
-            @Override
-            public void fabOnClick() {
-                Toast.makeText(MainActivity.this, "Jumper Callback dicalling after performing its function", Toast.LENGTH_SHORT).show();
-            }
-        });
+        jumperFab.setJumperFabCallback(() -> Toast.makeText(MainActivity.this, "Jumper Callback dicalling after performing its function", Toast.LENGTH_SHORT).show());
 
 
         try {
